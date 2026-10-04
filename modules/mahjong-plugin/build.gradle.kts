@@ -70,8 +70,8 @@ dependencies {
     compileOnly("net.momirealms:craft-engine-bukkit:26.7")
 
     implementation("com.zaxxer:HikariCP:7.1.0")
-    implementation("com.h2database:h2:2.4.240")
-    implementation("org.mariadb.jdbc:mariadb-java-client:3.5.9")
+    implementation("com.h2database:h2:2.5.252")
+    implementation("org.mariadb.jdbc:mariadb-java-client:3.5.10")
     implementation("com.mysql:mysql-connector-j:9.7.0")
     implementation("net.momirealms:sparrow-heart:0.72")
     implementation("net.momirealms:sparrow-reflection:0.33")
