@@ -43,7 +43,7 @@ Player clicks CraftEngine furniture or runs a command
 | Component | Required version |
 |---|---|
 | Java | **25** |
-| Server | Paper/Folia **26.2** |
+| Server | Paper/Folia **26.3** |
 | CraftEngine | **26.8 API line**: major/minor must be 26.8; 26.8.x/build suffixes are accepted, 26.9 is not |
 | Client | Must accept the CraftEngine-generated server resource pack |
 | First boot network | Maven Central mirror and `repo.momirealms.net` |

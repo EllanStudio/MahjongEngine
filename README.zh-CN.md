@@ -43,7 +43,7 @@ MahjongPaper 是一个面向 Paper/Folia 的 CraftEngine 麻将核心。核心�
 | 项目 | 要求 |
 |---|---|
 | Java | **25** |
-| 服务端 | Paper/Folia **26.2** |
+| 服务端 | Paper/Folia **26.3** |
 | CraftEngine | **26.8 API 线**：major/minor 必须是 26.8；允许 26.8.x 或构建后缀，不接受 26.9 |
 | 客户端 | 必须接受 CraftEngine 生成的服务器资源包 |
 | 网络 | 首次启动需访问 Maven Central 镜像与 `repo.momirealms.net` |

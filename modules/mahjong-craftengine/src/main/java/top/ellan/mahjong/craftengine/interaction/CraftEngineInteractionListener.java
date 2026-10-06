@@ -13,8 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerAnimationEvent;
-import org.bukkit.event.player.PlayerAnimationType;
+import io.papermc.paper.event.player.PlayerArmSwingEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -132,9 +131,8 @@ public final class CraftEngineInteractionListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onArmSwing(PlayerAnimationEvent event) {
-        if (event.getAnimationType() == PlayerAnimationType.ARM_SWING
-                && dispatchRay(event.getPlayer(), event.getPlayer().isSneaking(), null)) {
+    public void onArmSwing(PlayerArmSwingEvent event) {
+        if (dispatchRay(event.getPlayer(), event.getPlayer().isSneaking(), null)) {
             event.setCancelled(true);
         }
     }

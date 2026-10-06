@@ -1,6 +1,6 @@
 # Contributing
 
-MahjongPaper's portable core and rule SDK use Java 21. The Paper/CraftEngine adapters and final plugin use Java 25 for Paper 26.2. Gradle Kotlin DSL and the CraftEngine bundle generator are the only Kotlin build-time code.
+MahjongPaper's portable core and rule SDK use Java 21. The Paper/CraftEngine adapters and final plugin use Java 25 for Paper 26.3. Gradle Kotlin DSL and the CraftEngine bundle generator are the only Kotlin build-time code.
 
 Dependency direction:
 

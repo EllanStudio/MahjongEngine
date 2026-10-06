@@ -26,7 +26,14 @@ jobs:
 
   verify:
     needs: wrapper-validation
+    strategy:
+      fail-fast: false
+      matrix:
+        paper-api-version:
+          - 26.2.build.111-stable
+          - 26.3.build.157-beta
     runs-on: ubuntu-latest
+    name: Verify ${{ matrix.paper-api-version }}
     steps:
       - uses: actions/checkout@v7
       - name: Set up Java 25
@@ -41,12 +48,37 @@ jobs:
         shell: bash
         run: |
           bash .github/scripts/gradle-with-transient-retry.sh gradle-verify.log -- \
-            ./gradlew clean check :mahjong-plugin:jar :mahjong-plugin:verifyThinJar --no-daemon --stacktrace
+            ./gradlew clean check :mahjong-plugin:jar :mahjong-plugin:verifyThinJar \
+              -PpaperApiVersion="${{ matrix.paper-api-version }}" --no-daemon --stacktrace
+      - name: Verify portable and Paper adapter bytecode
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          portable = ["mahjong-rule-spi", "mahjong-domain", "mahjong-application",
+                      "mahjong-rule-runtime", "mahjong-presentation"]
+          adapters = ["mahjong-platform-paper", "mahjong-craftengine", "mahjong-plugin"]
+          def majors(module):
+              root = Path("modules") / module / "build/classes/java/main"
+              return {struct.unpack(">H", p.read_bytes()[6:8])[0]
+                      for p in root.rglob("*.class")}
+          for module in portable:
+              got = majors(module)
+              if got != {65}:
+                  raise SystemExit(f"{module} must remain Java 21 major 65, got {sorted(got)}")
+          for module in adapters:
+              got = majors(module)
+              if got != {69}:
+                  raise SystemExit(f"{module} must remain Java 25 major 69, got {sorted(got)}")
+          print("portable modules=Java21/65; Paper adapters=Java25/69")
+          PY
+
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: module-test-reports-linux
+          name: module-test-reports-linux-${{ matrix.paper-api-version }}
           path: |
             modules/*/build/reports/tests/**
             gradle-verify.log

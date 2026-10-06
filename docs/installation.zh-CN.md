@@ -5,7 +5,7 @@
 要求：
 
 - Java 25；
-- Paper 或 Folia 26.2；
+- Paper 或 Folia 26.3；
 - CraftEngine 26.8 API 线（major/minor 必须为 26.8，允许 patch/build 后缀，不接受 26.9；升级 CE API 线前必须先升级 MahjongPaper）；
 - CraftEngine 保持默认的 `misc.delay-configuration-load: true`，以便依赖插件在资源解析前注册行为与条件；
 - 至少一个已安装、已验证并在重启后激活的官方规则包。
