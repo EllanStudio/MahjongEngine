@@ -65,18 +65,18 @@ dependencies {
     implementation(project(":mahjong-platform-paper"))
     implementation(project(":mahjong-craftengine"))
 
-    compileOnly("io.papermc.paper:paper-api:26.2.build.111-stable")
+    compileOnly("io.papermc.paper:paper-api:26.3.build.193-stable")
     compileOnly("net.momirealms:craft-engine-core:26.7")
     compileOnly("net.momirealms:craft-engine-bukkit:26.7")
 
     implementation("com.zaxxer:HikariCP:7.1.0")
-    implementation("com.h2database:h2:2.4.240")
-    implementation("org.mariadb.jdbc:mariadb-java-client:3.5.9")
+    implementation("com.h2database:h2:2.5.252")
+    implementation("org.mariadb.jdbc:mariadb-java-client:3.5.10")
     implementation("com.mysql:mysql-connector-j:9.7.0")
     implementation("net.momirealms:sparrow-heart:0.72")
     implementation("net.momirealms:sparrow-reflection:0.33")
     implementation("net.momirealms:sparrow-yaml:1.0.7")
-    implementation("org.ow2.asm:asm:9.10.1")
+    implementation("org.ow2.asm:asm:9.11")
 }
 
 sourceSets.main {
